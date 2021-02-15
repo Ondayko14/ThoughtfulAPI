@@ -1,0 +1,22 @@
+{
+  "name": "thoughtfulapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ondayko14/ThoughtfulAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ondayko14/ThoughtfulAPI/issues"
+  },
+  "homepage": "https://github.com/Ondayko14/ThoughtfulAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
