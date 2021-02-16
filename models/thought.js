@@ -1,14 +1,14 @@
 const { Schema, model } = require('mongoose');
 
 const ThoughtsSchema = new Schema({
-    thoughtText: {
+    thoughtBody: {
         type: String
     },
     createdAt: {
         type: Date,
         default: Date.now 
     },
-    userName: {
+    createdBy: {
         type: String
     },
     reactions: {

@@ -1,5 +1,4 @@
 const {User} = require('../models');
-const { db } = require('../models/User.js');
 
 const userController = {
     //functions
