@@ -7,12 +7,25 @@ const ThoughtfulUserSchema = new Schema({
     email: {
         type: String
     },
-    thoughts: {
-        thoughtModel: []
-    },
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+    ],
     friends : {
         selfRef: []
     }
+},
+{
+    toJSON: {
+        virtuals: true,
+    },
+    id: false
+});
+
+ThoughtfulUserSchema.virtual('thoughtCount').get(function() {
+    return this.thoughts.length;
 });
 
 const User = model('User', ThoughtfulUserSchema);
