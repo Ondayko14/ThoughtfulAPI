@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
-const User = model('User', UserSchema);
 
-const UserSchema = new Schema({
+const ThoughtfulUserSchema = new Schema({
     userName: {
         type: String
     },
@@ -15,5 +14,7 @@ const UserSchema = new Schema({
         selfRef: []
     }
 });
+
+const User = model('User', ThoughtfulUserSchema);
 
 module.exports = User;
