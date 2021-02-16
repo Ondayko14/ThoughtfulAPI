@@ -3,6 +3,6 @@ const { addThought, removeThought } = require('../../controllers/thought-control
 
 router.route('/:userId').post(addThought);
 
-router.route('./:userId/:thoughtId').delete(removeThought);
+router.route('/:userId/:thoughtId').delete(removeThought);
 
 module.exports = router;
