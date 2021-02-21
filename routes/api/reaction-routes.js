@@ -3,6 +3,6 @@ const { addReaction, removeReaction } = require('../../controllers/reaction-cont
 
 router.route('/:thoughtId').post(addReaction);
 
-router.route('/:userId/:friendId').delete(removeReaction);
+router.route('/:thoughtId/:reactionId').delete(removeReaction);
 
 module.exports = router;
