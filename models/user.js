@@ -13,9 +13,12 @@ const ThoughtfulUserSchema = new Schema({
             ref: 'Thought'
         }
     ],
-    friends : {
-        selfRef: []
-    }
+    friends : [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Friend'
+        }
+    ],
 },
 {
     toJSON: {
@@ -26,6 +29,9 @@ const ThoughtfulUserSchema = new Schema({
 
 ThoughtfulUserSchema.virtual('thoughtCount').get(function() {
     return this.thoughts.length;
+});
+ThoughtfulUserSchema.virtual('friendCount').get(function() {
+    return this.friends.length;
 });
 
 const User = model('User', ThoughtfulUserSchema);
