@@ -60,6 +60,27 @@ const thoughtController = {
           res.status(400).json(err);
       });
   },
+
+  //get a thought by ID
+  getThoughtById({params}, res) {
+    Thought.findOne({_id: params.id})
+    .populate({
+        path: 'thoughts',
+        select: '-__v'
+      })
+      .select('-__v')
+    .then(dbThoughtData => {
+        if(!dbThoughtData) {
+            res.status(404).json({message: 'No thought found with that id'});
+            return;
+        }
+        res.json(dbThoughtData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+    })
+},
 };
 
 module.exports = thoughtController;
