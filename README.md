@@ -26,7 +26,7 @@ Node, Javascript, MongoDB, Mongoose, Express
 
 > Posting, editing commenting on a user-user platform
 
-![screenshot](./src/assets/images/screenshot.png)
+https://drive.google.com/file/d/12alop0vqMSqWy10xJ6omszLwx2YUMneO/view
 
 
 ## License
