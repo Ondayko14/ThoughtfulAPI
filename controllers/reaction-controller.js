@@ -1,49 +1,49 @@
 const { Reaction, Thought } = require('../models');
 
-const friendController = {
+const reactionController = {
     //add a Reaction
     addReaction({params, body}, res) {
       console.log(body);
         Reaction.create(body)
         .then(({_id}) => {
             return Thought.findOneAndUpdate(
-                {_id: params.userId},
-                {$push: {friends: _id} },
+                {_id: params.thoughtId},
+                {$push: {reactions: _id} },
                 {new: true}
             );
         })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                res.status(404).json({message: "No user by that ID!"})
+        .then(dbThoughtsData => {
+            if (!dbThoughtsData) {
+                res.status(404).json({message: "No Thoughts by that ID!"})
                 return;
             }
-            res.json(dbUserData);
+            res.json(dbThoughtsData);
         })
         .catch(err => res.json(err));
     },
 
     //remove a Reaction
-    removeFriend({ params }, res) {
-        Reaction.findOneAndDelete({ _id: params.friendId })
-          .then(deletedFriend => {
-            if (!deletedFriend) {
+    removeReaction({ params }, res) {
+        Reaction.findOneAndDelete({ _id: params.reactionId })
+          .then(deletedReaction => {
+            if (!deletedReaction) {
               return res.status(404).json({ message: 'No Reaction with this id!' });
             }
-            return User.findOneAndUpdate(
-              { _id: params.userId },
-              { $pull: { friends: params.friendId } },
+            return Thought.findOneAndUpdate(
+              { _id: params.thoughtId },
+              { $pull: { friends: params.reactionId } },
               { new: true }
             );
           })
-          .then(dbUserData => {
-            if (!dbUserData) {
-              res.status(404).json({ message: 'No user found with this id!' });
+          .then(dbReactionData => {
+            if (!dbReactionData) {
+              res.status(404).json({ message: 'No reaction found with this id!' });
               return;
             }
-            res.json(dbUserData);
+            res.json(dbReactionData);
           })
           .catch(err => res.json(err));
     }
 };
 
-module.exports = friendController;
+module.exports = reactionController;
