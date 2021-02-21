@@ -2,14 +2,18 @@ const { Schema, model } = require('mongoose');
 
 const ThoughtsSchema = new Schema({
     thoughtBody: {
-        type: String
+        type: String,
+        required: true,
+        minLength: 1,
+        maxLength: 280
     },
     createdAt: {
         type: Date,
         default: Date.now 
     },
     createdBy: {
-        type: String
+        type: String,
+        required: true
     },
     reactions : [
         {
